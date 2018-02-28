@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidIntents</string>
+    <string name="title_activity_user_overview">UserOverviewActivity</string>
+</resources>
