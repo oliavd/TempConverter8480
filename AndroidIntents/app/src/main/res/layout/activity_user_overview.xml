@@ -9,29 +9,35 @@
 
 
     <TextView
-        android:id="@+id/userlabel"
-        android:layout_width="120dp"
-        android:layout_height="48dp"
-        android:text="Username"
+        android:id="@+id/userNameLabel"
+        android:layout_width="136dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="104dp"
+        android:text="USERNAME:"
         android:textAppearance="@style/TextAppearance.AppCompat.Menu"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="66dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="195dp" />
+        android:id="@+id/user_name"
+        android:layout_width="150dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:inputType="textPersonName"
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="268dp"
-        tools:layout_editor_absoluteY="302dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button_learn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameLabel"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button_learn"
@@ -44,4 +50,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/genderImage"
+        android:layout_width="150dp"
+        android:layout_height="155dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="yourPhoto"
+        app:layout_constraintBottom_toTopOf="@+id/button_learn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.632"
+        app:layout_constraintStart_toEndOf="@+id/userNameLabel"
+        app:layout_constraintTop_toTopOf="@+id/userNameLabel"
+        app:layout_constraintVertical_bias="0.0" />
+
 </android.support.constraint.ConstraintLayout>
