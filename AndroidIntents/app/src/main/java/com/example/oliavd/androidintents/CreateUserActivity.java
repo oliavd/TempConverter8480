@@ -35,9 +35,6 @@ public class CreateUserActivity extends AppCompatActivity {
                         break;
                 }
 
-                System.out.println(male);
-
-
             }
 
 

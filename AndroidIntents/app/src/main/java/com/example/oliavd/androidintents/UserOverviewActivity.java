@@ -7,16 +7,21 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.EditText;
+import android.widget.Toast;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserOverviewActivity extends AppCompatActivity {
 
-    public static final int SUB_ACTIVITY_CREATE_USER = 10;
+    public static final int SUB_ACTIVITY_CREATE_USER = 10, SUB_ACTIVITY_LEARN = 20;
     private User user;
     ImageView genderImg;
     TextView name;
+    TextView skillPoint;
+    int skillPointInteger = 0;
 
 
 
@@ -31,6 +36,7 @@ public class UserOverviewActivity extends AppCompatActivity {
         boolean userExists = false;
         genderImg = (ImageView) findViewById(R.id.genderImage) ;
         name = findViewById(R.id.user_name);
+        skillPoint = findViewById(R.id.skill_point);
 
         /*Create a new one if none exist (call subactivity CreateActivity*/
         if(!userExists){
@@ -38,7 +44,14 @@ public class UserOverviewActivity extends AppCompatActivity {
             startActivityForResult(intent, SUB_ACTIVITY_CREATE_USER);
         }
 
-            }
+    }
+
+    public void onClick(View view){
+        Intent intent = new Intent(this,LearningActivity.class);
+        intent.putExtra("skillPoints",user.skillPoints);
+        startActivityForResult(intent,SUB_ACTIVITY_LEARN);
+
+    }
 
         /* Callback for started sub-activity */
     @Override
@@ -55,11 +68,22 @@ public class UserOverviewActivity extends AppCompatActivity {
                 updateUserInterface();
             }
         }
+
+        if(requestCode == SUB_ACTIVITY_LEARN && resultCode == RESULT_OK){
+            if(data.hasExtra("skillLevel")){
+                //TODO implement what to do with returned data
+                skillPointInteger = data.getExtras().getInt("skillLevel");
+                user.skillPoints = skillPointInteger;
+                Toast.makeText(this,"New Skill Level: "+String.valueOf(skillPointInteger),Toast.LENGTH_SHORT).show();
+
+                skillPoint.setText(String.valueOf(skillPointInteger));
+            }
+        }
     }
 
     private void updateUserInterface(){
-        //TODO show the new user values in the UI
-        System.out.println(user.gender);
+        //TODO show the new user values in the UI (add skill level to it)
+
         if (user.gender){
 
             genderImg.setImageDrawable(getDrawable(R.drawable.ic_boy));
@@ -67,10 +91,15 @@ public class UserOverviewActivity extends AppCompatActivity {
             genderImg.setImageDrawable(getDrawable(R.mipmap.ic_launcher_foreground));
         }
 
+        skillPoint.setText(String.valueOf(user.skillPoints));
 
         name.setText(user.name);
+        Toast.makeText(this,"User: "+String.valueOf(user.name)+" Created",Toast.LENGTH_LONG).show();
+
 
 
     }
+
+
 
 }
